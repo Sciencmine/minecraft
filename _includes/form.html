@@ -1,16 +1,16 @@
-<form id="contactForm" action="https://formspree.io/{{site.email}}" method="post" novalidate>
+<form id="contactForm" action="https://formspree.io/{{site.form_endpoint}}" method="post" novalidate>
   <div class="form__input half">
-    <label for="name">Name</label>
+    <label for="name">姓名</label>
     <input type="text" name="name" id="name" autocomplete="name" required>
   </div>
 
   <div class="form__input input half">
-    <label for="email">Email</label>
+    <label for="email">邮箱</label>
     <input type="email" name="_replyto" id="email" autocomplete="email" required>
   </div>
 
   <div class="form__input">
-    <label for="message">Message</label>
+    <label for="message">消息</label>
     <textarea type="text" name="message" id="message" rows="7" autocomplete="message" required></textarea>
   </div>
 
