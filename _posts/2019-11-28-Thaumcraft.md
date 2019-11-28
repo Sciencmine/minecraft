@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: post
 title:  "神秘时代下载"
 featured-img: sleek
 categories: [Thaumcraft]
@@ -26,4 +26,3 @@ categories: [Thaumcraft]
 <iframe src="https://www.cfwidget.com/minecraft/mc-mods/baubles?version=1.8.9" width="100%" style="border: none;"></iframe>
 ## 1.7.10
 <iframe src="https://www.cfwidget.com/minecraft/mc-mods/baubles?version=1.7.10" width="100%" style="border: none;"></iframe>
-
