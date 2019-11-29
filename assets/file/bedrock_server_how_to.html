@@ -1,0 +1,438 @@
+<html>
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <style type="text/css">
+    body {
+        max-width: 700px;
+        font-family: Arial;
+    }
+
+    blockquote, pre {
+        border: 1px solid #000;
+        margin: 5px 0;
+        padding: 5px;
+        font-family: "Courier New";
+        font-size: 11pt;
+        background: #eee;
+    }
+
+    code {
+        background: #eee;
+        padding: 2px;
+    }
+
+    table {
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #000;
+        padding: 5px;
+    }
+    
+    </style>
+</head>
+
+<body class="c31">
+    <h1>如何使用这个私人服务器</h1>
+    <h2>声明</h2>
+    <p>
+        这是一个早期发行版（Alpha），我们目前不对其完全支持。可能含有严重漏洞，我们可能在任何时候停止对它的支持。
+    </p>
+
+    <h2>平台</h2>
+
+    <h3>Linux</h3>
+    <p>
+        将压缩文件解压缩到空文件夹中。使用下列命令启动服务器：
+    </p>
+    <blockquote>
+        LD_LIBRARY_PATH=. ./bedrock_server
+    </blockquote>
+
+    <h3>Windows</h3>
+    <p>
+        将压缩文件解压缩到空文件夹中。 打开文件 <code>bedrock_server.exe</code> 启动服务器.
+    </p>
+    <p>
+        在某些操作系统上，如果您希望在服务器运行时使用一个运行在同一台机器的客户端来连接到该服务器，
+        您将需要运行以下命令来解除Minecraft客户端的UWP回环限制： 
+        <blockquote>CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752920682-3514627264-368642714-62675701-733520436</blockquote>.
+    </p>
+
+    <h2>配置文件</h2>
+    <p>
+        服务器会尝试读取名为 <code>server.properties</code> 的文件。一些选项只在创建新世界时被读取，另一些则会在每次启动时被读取。该文件应当包含一个有键与值的列表，一行一个。
+    </p>
+    <p>
+        下列选项可用。若数字在括号中，则该数字可替换对应文本。
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>选项名</th>
+                <th>有效值</th>
+                <th>默认值</th>
+                <th>何时被使用</th>
+                <th>说明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>gamemode</td>
+                <td>survival (0), creative (1), adventure (2)</td>
+                <td>survival</td>
+                <td>总是/仅新玩家</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>difficulty</td>
+                <td>peaceful (0), easy (1), normal (2), hard (3)</td>
+                <td>easy</td>
+                <td>总是</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>level-type</td>
+                <td>FLAT, LEGACY, DEFAULT</td>
+                <td>DEFAULT</td>
+                <td>生成世界时</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>server-name</td>
+                <td>任意字符串</td>
+                <td>Dedicated Server</td>
+                <td>总是</td>
+                <td>此为在游戏内服务器列表中显示的名称。</td>
+            </tr>
+            <tr>
+                <td>max-players</td>
+                <td>任意32位整数</td>
+                <td>10</td>
+                <td>总是</td>
+                <td>服务器最大玩家数。<b>高值会降低性能。</b></td>
+            </tr>
+            <tr>
+                <td>server-port</td>
+                <td>任意32位整数</td>
+                <td>19132</td>
+                <td>总是</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>server-portv6</td>
+                <td>任意32位整数</td>
+                <td>19133</td>
+                <td>总是</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>level-name</td>
+                <td>任意字符串</td>
+                <td>level</td>
+                <td>总是</td>
+                <td>使用/生成的存档的名称。每个存档都在 <code>/worlds</code> 文件夹下有独立子文件夹。</td>
+            </tr>
+            <tr>
+                <td>level-seed</td>
+                <td>任意字符串</td>
+                <td></td>
+                <td>生成世界时</td>
+                <td>种子用于随机化生成世界。留空取随机值。</td>
+            </tr>
+            <tr>
+                <td>online-mode</td>
+                <td>true, false</td>
+                <td>true</td>
+                <td>总是</td>
+                <td>若为真，则所有玩家必需登录 Xbox Live。</td>
+            </tr>
+            <tr>
+                <td>white-list</td>
+                <td>true, false</td>
+                <td>false</td>
+                <td>总是</td>
+                <td>若为真，则只有列于 <code>whitelist.json</code> 文件中的玩家可以连接到服务器。
+                            见 <i>白名单</i> 区域。</td>
+            </tr>
+            <tr>
+                <td>allow-cheats</td>
+                <td>true, false</td>
+                <td>false</td>
+                <td>总是</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>view-distance</td>
+                <td>任意32位整数</td>
+                <td>10</td>
+                <td>总是</td>
+                <td>最大视距。 <b>高值会降低性能。</b></td>
+            </tr>
+            <tr>
+                <td>player-idle-timeout</td>
+                <td>任意32位整数</td>
+                <td>30</td>
+                <td>总是</td>
+                <td>玩家在被踢出前的最大AFK时间。</td>
+            </tr>
+            <tr>
+                <td>max-threads</td>
+                <td>任意32位整数</td>
+                <td>8</td>
+                <td>总是</td>
+                <td>服务器尝试使用的最大线程数。</td>
+            </tr>
+            <tr>
+                <td>tick-distance</td>
+                <td>在[4, 12]的范围内的整数</td>
+                <td>4</td>
+                <td>总是</td>
+                <td>世界会加载距离任何玩家此范围内的区块。<b>高值会降低性能。</b></td>
+            </tr>
+            <tr>
+                <td>default-player-permission-level</td>
+                <td>visitor, member, operator</td>
+                <td>member</td>
+                <td>总是</td>
+                <td>玩家首次加入时具有的权限级。</td>
+            </tr>
+            <tr>
+                <td>texturepack-required</td>
+                <td>true, false</td>
+                <td>false</td>
+                <td>总是</td>
+                <td>若服务器加载有材质包，则强制客户端使用同一材质包。</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>示例 server.properties 文件</h3>
+    <blockquote>
+        server-name=Dedicated Server<br />
+        gamemode=survival<br />
+        difficulty=easy<br />
+        allow-cheats=false<br />
+        max-players=10<br />
+        online-mode=true<br />
+        white-list=false<br />
+        server-port=19132<br />
+        server-portv6=19133<br />
+        view-distance=10<br />
+        tick-distance=4<br />
+        player-idle-timeout=30<br />
+        max-threads=8
+    </blockquote>
+
+    <h2>文件夹</h2>
+    <p>
+        当解压时，您会看到一些文件夹和程序。初次启动服务器时一些新的（空）文件夹将会被创建。您应当注意下列文件夹：
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>文件夹名称</th>
+                <th>用途</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>behavior_packs</td>
+                <td>这是安装行为包的地方。目前无法在存档中激活它们。</td>
+            </tr>
+            <tr>
+                <td>resource_packs</td>
+                <td>这是安装资源包的地方。目前无法在存档中激活它们。</td>
+            </tr>
+            <tr>
+                <td>worlds</td>
+                <td>若本文件夹不存在，则会在启动时创建。每个世界的文件夹会在本文件夹下以 <code>server.properties</code> 中所设置的 <code>level-name</code> 命名。</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>白名单</h2>
+    <p>
+        若 <code>white-list</code> 项在 <code>server.properties</code> 中被启用，服务器将只允许选定玩家连接。 若想允许某玩家连接，您需要知道他/她的Xbox Live Gamertag。将一个玩家加入白名单的最简单的方法是使用 <code>whitelist add &lt;Gamertag&gt;</code> (例如： <code>whitelist add 示例名字</code>) 命令。注：如果名字中有空格，则必须将名字置于双引号内，如： <code>whitelist add "示例名字"</code>
+    </p>
+    <p>
+        若您想从那个白名单列表中移除某人，则可使用 <code>whitelist remove &lt;示例名字&gt;</code> 命令。
+    </p>
+    <p>
+        白名单存储在 <code>whitelist.json</code> 中。若想要匹配在其中添加或移除的玩家，您可以这样在修改完毕后运行 <code>whitelist reload</code> 命令来确保服务器读取您的更改。
+    </p>
+    <p>
+        本文件包含一个JSON列表，其中有以下键与值：
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>键</th>
+                <th>类型</th>
+                <th>值</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name</td>
+                <td>字符串</td>
+                <td>用户的 Gamertag 。</td>
+            </tr>
+            <tr>
+                <td>xuid</td>
+                <td>字符串</td>
+                <td>可选。用户的XUID。如果未设置，那么当有匹配名称的人连接时，它就会被自动填充。</td>
+            </tr>
+            <tr>
+                <td>ignoresPlayerLimit</td>
+                <td>布尔值</td>
+                <td>若为真，则该玩家不计入最大玩家数限制。即使玩家使用这个选项，目前仍有最多30个（或比设定的最大玩家数量大1）连接的玩家的软限制。这样做的目的是让一些玩家在即使服务器已满时能还够加入。</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        示例 <code>whitelist.json</code> 文件：
+    </p>
+    <pre>
+[
+    {
+        "ignoresPlayerLimit": false,
+        "name": "MyPlayer"
+    },
+    {
+        "ignoresPlayerLimit": false,
+        "name": "AnotherPlayer",
+        "xuid": "274817248"
+    }
+]</pre>
+
+    <h2>权限级</h2>
+    <p>
+        您可以通过在与服务器可执行文件同一目录的 <code>permissions.json</code> 中分配角色来调整玩家的权限级。该文件包含一个带有XUID和权限的简单JSON项。有效权限级有： <code>operator</code>, <code>member</code>, <code>visitor</code> 。所有以这些账户连接的玩家都会根据设定的优先级进行处理。如果在服务器运行时更改此文件，则运行 <code>permissions reload</code> 命令以确保服务器读取您的更改。 您也可以使用 <code>permissions list</code> 命令来列出当前权限列表。注意因用户账户的XUID需要在线验证， <code>online-mode</code> 必须设定为真。若不在此列表中的新玩家连接至服务器，则会应用 <code>default-player-permission-level</code> 选项设定的权限级。
+    </p>
+    <p>
+        示例 <code>permissions.json</code> 文件：
+    </p>
+
+    <pre>
+[
+    {
+        "permission": "operator",
+        "xuid": "451298348"
+    },
+    {
+        "permission": "member",
+        "xuid": "52819329"
+    },
+    {
+        "permission": "visitor",
+        "xuid": "234114123"
+    }
+]</pre>
+
+    <h2>崩溃报告</h2>
+    <p>
+        如果服务器崩溃，它会自动向我们发送各种信息，帮助我们在以后修复它。
+    </p>
+
+    <h2>命令</h2>
+    <p>
+        您可以通过键入于控制台向服务器发出命令。下列命令可用 &lt; &gt; 代表必须参数， [ ] 代表可选参数， | 隔开不同有效值。有空格的字符串包括在双引号中中。
+    </p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>命令语法</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>kick &lt;玩家名 or XUID&gt; &lt;原因&gt;</td>
+                <td>立即踢出某个玩家。原因会显示在被踢出玩家的屏幕上。</td>
+            </tr>
+            <tr>
+                <td>stop</td>
+                <td>安全地关闭服务器。</td>
+            </tr>
+            <tr>
+                <td>save &lt;hold | resume | query&gt;</td>
+                <td>用于在服务器运行时进行小备份。详见备份区域。</td>
+            </tr>
+            <tr>
+                <td>whitelist &lt;on | off | list | reload&gt;</td>
+                <td>
+                    <p>
+                        <code>on</code> and <code>off</code> 决定白名单模式是否打开。注意这并不改变 <code>server.properties</code> 中设定的值！
+                    </p>
+                    <p>
+                        <code>list</code> 列出服务器当前使用的白名单。
+                    </p>
+                    <p>
+                        <code>reload</code> 让服务器从文件重载白名单。
+                    </p>
+                    <p>
+                        详见白名单区域
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>whitelist &lt;add | remove&gt; &lt;名字&gt;</td>
+                <td>从白名单中添加或移除玩家。<code>名字</code>属性应为您想添加的玩家的 Xbox Live Gamertag 。您不需要指定XUID, 这将在玩家第一次连接时自动获取。<br/><br/>详见白名单区域。</td>
+            </tr>
+            <tr>
+                <td>ops &lt;list | reload&gt;</td>
+                <td>
+                    <p>
+                        <code>list</code> 列出当前的管理员列表。
+                    </p>
+                    <p>
+                        <code>reload</code> 使服务器从 <code>ops</code> 重载管理员列表。
+                    </p>
+                    <p>
+                        详见白名单区域。
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>changesetting &lt;设置&gt; &lt;值&gt;</td>
+                <td>在不重启服务器的情况下更改服务器设置。目前只支持两个设置的更改： <code>allow-cheats</code> （ <code>true</code> 或 <code>false</code> ）和 <code>difficulty</code> （ 0 或 <code>peaceful</code> ， 1 或 <code>easy</code> ， 2 或 <code>normal</code> ， 3 或 <code>hard</code> ）。这不改变 <code>server.properties</code> 中所设置的值。</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>备份</h2>
+    <p>
+        服务器支持在服务器运行时对世界进行备份。这对手动备份并不特别友好，但对自动备份更加适配。备份（从服务器端）由三个命令组成。
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>命令</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>save hold</td>
+                <td>这将要求服务器准备备份。它是异步的并将立即返回。</td>
+            </tr>
+            <tr>
+                <td>save query</td>
+                <td>使用 <code>save hold</code> 之后，你应该反复使用这个命令，检查准备是否完成。若返回值为成功，将返回需要复制的文件的文件列表（和每个文件的长度）。服务器在此时不会暂停，因此在进行备份时某些文件可能被修改。只要您只复制给定文件列表中的文件并将复制的文件截断到指定的长度，那么备份应当是有效的。</td>
+            </tr>
+            <tr>
+                <td>save resume</td>
+                <td>当你复制文件完毕时，你应该使用它来告诉服务器可以再次删除旧文件。</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
