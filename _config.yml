@@ -5,7 +5,7 @@ description: > # Meta description of Homepage
   Sciencmine 的博客，Minecraft 分页，浅谈关于 Minecraft、模组等的一系列问题
 baseurl: "/minecraft" # the subpath of your site, e.g. /blog
 url: "https://sciencmine.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-assets: {{site.url}}{{site.baseurl}}assets
+assets: "{{site.url}}{{site.baseurl}}assets/"
 
 # SEO PLUGIN
 social:
