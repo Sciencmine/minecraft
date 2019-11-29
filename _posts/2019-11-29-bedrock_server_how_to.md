@@ -5,6 +5,6 @@ featured-img: https://minecraft.net/static/pages/img/servers/servers-hub-3.3048a
 categories: [BE]
 ---
 
-<iframe src="{{ site.url }}assets/file/bedrock_server_how_to.html" width="100%" style="border: none;"></iframe>
+<iframe src="{{site.assets}}}file/bedrock_server_how_to.html" width="100%" style="border: none;"></iframe>
+[**下载链接**]({{site.assets}}file/bedrock_server_how_to.html)
 
-[**下载链接**]({{ site.url }}assets/file/bedrock_server_how_to.html)
