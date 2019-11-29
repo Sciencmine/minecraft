@@ -8,4 +8,4 @@ permalink: /about/
 
 比如模组技巧等等……
 
-欢迎[提出疑问]({{site.url}}contact)
+欢迎[提出疑问]({{site.url}}{{site.baseurl}}contact)
