@@ -14,15 +14,22 @@ categories: [Thaumcraft]
 
 ## 1.12.2
 <iframe src="https://www.cfwidget.com/minecraft/mc-mods/thaumcraft?version=1.12.2" width="100%" style="border: none;"></iframe>
+
 ## 1.8.9
 <iframe src="https://www.cfwidget.com/minecraft/mc-mods/thaumcraft?version=1.8.9" width="100%" style="border: none;"></iframe>
+
 ## 1.7.10
 <iframe src="https://www.cfwidget.com/minecraft/mc-mods/thaumcraft?version=1.7.10" width="100%" style="border: none;"></iframe>
+
 # 前置 Baubles
 
 ## 1.12.2
 <iframe src="https://www.cfwidget.com/minecraft/mc-mods/baubles?version=1.12.2" width="100%" style="border: none;"></iframe>
+
 ## 1.8.9
 <iframe src="https://www.cfwidget.com/minecraft/mc-mods/baubles?version=1.8.9" width="100%" style="border: none;"></iframe>
+
 ## 1.7.10
 <iframe src="https://www.cfwidget.com/minecraft/mc-mods/baubles?version=1.7.10" width="100%" style="border: none;"></iframe>
+
+也试试我的[Curseforge 下载助手](https://sciencmine.github.io/cfhelper)！
